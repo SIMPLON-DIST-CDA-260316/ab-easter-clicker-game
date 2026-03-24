@@ -10,6 +10,8 @@ let isFinished = true;
 
 let total = 0;
 let time = 10;
+let timerInterval;
+let generateItem;
 
 const srcTable = [
   { name: "egg choco", src: "/media/easter-egg-1.webp", score: 1 },
@@ -60,25 +62,43 @@ function createItem() {
   }, 4000);
 }
 
-startBtn.addEventListener("click", (e) => {
-  scoreElement.innerHTML = total;
+function startGame() {
+  total = 0;
+  time = 10;
+  gameContainer.innerHTML = "";
   isFinished = false;
-  setInterval(() => {
-    timerElement.innerHTML = time;
+  scoreElement.innerHTML = total;
+  timerElement.innerHTML = time;
+  clearInterval(timerInterval);
+  clearInterval(generateItem);
+  timerInterval = setInterval(() => {
     if (time > 0) {
       time -= 1;
+      timerElement.innerHTML = time;
     }
     if (time === 0) {
       isFinished = true;
     }
+    if (isFinished) {
+      clearInterval(timerInterval);
+      gameContainer.innerHTML = "";
+      return;
+    }
   }, 1000);
 
-  const generateItem = setInterval(() => {
+  generateItem = setInterval(() => {
     if (!isFinished) {
       createItem();
     }
+    if (isFinished) {
+      clearInterval(generateItem);
+      gameContainer.innerHTML = "";
+      return;
+    }
   }, 1500);
-  if (isFinished) {
-    clearInterval(generateItem);
-  }
+}
+
+startBtn.addEventListener("click", (e) => {
+  startGame();
+  startBtn.innerHTML = "Relancer une partie";
 });
