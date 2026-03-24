@@ -9,19 +9,20 @@
   <body>
     <div class="container">
       <h1>Mini jeu</h1>
-      <div id="game-container">
-        <img src="/media/easter-egg-1.webp" alt="" id="easter-egg-1" class="easter-egg">
-      </div>
-      <section class="settings">
+      <section class="game-header">
         <div>
-          <p>Petit poussin - facile</p>
-          <p>Lapin malin - intermédiaire</p>
-          <p>Chasseur d'oeufs - difficile</p>
+          <span>Temps restant : </span><span id="timer"></span><span> sec</span>
         </div>
-        <div><p>Timer</p></div>
-        <div><p>Score</p></div>
+        <div><button type="button" id="start-btn">Démarrer</button></div>
+        <div><span>Score : </span><span id="score"></span></div>
       </section>
-      <div><button type="button" id="start-btn">Démarrer</button></div>
+
+      <div id="game-container"></div>
+      <div class="settings">
+        <button>Petit poussin - facile</button>
+        <button>Lapin malin - intermédiaire</button>
+        <button>Chasseur d'oeufs - difficile</button>
+      </div>
     </div>
 
     <script src="/script.js"></script>

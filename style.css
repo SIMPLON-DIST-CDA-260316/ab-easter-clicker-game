@@ -1,7 +1,15 @@
-.container{
-margin: 0 auto;
-display: block;
-max-width: 1100px;
+.game-header {
+  display: flex;
+  max-width: 1000px;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  display: block;
+  max-width: 1100px;
 }
 
 #game-container {
@@ -13,18 +21,11 @@ max-width: 1100px;
   position: relative;
 }
 
-#easter-egg-1{
-    width: 30px;
-}
-.easter-egg{
-    display: none;
-    position: absolute;
-}
-
-.settings{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-around;
-    max-width: 1000px;
+.settings {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 1000px;
 }

@@ -1,15 +1,22 @@
 const gameContainer = document.getElementById("game-container");
-const easterEgg = document.getElementById("easter-egg-1");
 const startBtn = document.getElementById("start-btn");
 const containerTop = gameContainer.getBoundingClientRect().top;
 const containerBottom = gameContainer.getBoundingClientRect().bottom;
 const containerLeft = gameContainer.getBoundingClientRect().left;
 const containerRight = gameContainer.getBoundingClientRect().right;
+const scoreElement = document.getElementById("score");
+const timerElement = document.getElementById("timer");
+let isFinished = true;
+
+let total = 0;
+let time = 10;
 
 const srcTable = [
-  "/media/easter-egg-1.webp",
-  "/media/easter-egg-2.webp",
-  "/media/easter-egg-gold.webp",
+  { name: "egg choco", src: "/media/easter-egg-1.webp", score: 1 },
+  { name: "egg choco", src: "/media/easter-egg-2.webp", score: 1 },
+  { name: "egg gold", src: "/media/easter-egg-gold.webp", score: 5 },
+  { name: "egg crack", src: "/media/chick.webp", score: -2 },
+  { name: "chicken", src: "/media/chicken.webp", score: -2 },
 ];
 
 function createItem() {
@@ -26,24 +33,52 @@ function createItem() {
 
   let imageItem = document.createElement("img");
   function getRandomSrc() {
-    return Math.round(Math.random() * 2);
+    return Math.round(Math.random() * 4);
   }
-  let src = srcTable[getRandomSrc()];
+
+  const randomItem = getRandomSrc();
+  let src = srcTable[randomItem].src;
+  let points = srcTable[randomItem].score;
   imageItem.src = src;
 
   imageItem.style.left = x + "px";
   imageItem.style.top = y + "px";
-  imageItem.style.width = 30 + "px";
+  imageItem.style.maxWidth = 30 + "px";
   imageItem.classList.add("item");
   imageItem.style.position = "absolute";
+
   gameContainer.appendChild(imageItem);
   imageItem.addEventListener("click", (e) => {
     imageItem.style.display = "none";
+    console.log(points);
+    total += points;
+    scoreElement.innerHTML = total;
   });
+
+  setTimeout(() => {
+    imageItem.style.display = "none";
+  }, 4000);
 }
 
 startBtn.addEventListener("click", (e) => {
+  scoreElement.innerHTML = total;
+  isFinished = false;
   setInterval(() => {
-    createItem();
-  }, 2000);
+    timerElement.innerHTML = time;
+    if (time > 0) {
+      time -= 1;
+    }
+    if (time === 0) {
+      isFinished = true;
+    }
+  }, 1000);
+
+  const generateItem = setInterval(() => {
+    if (!isFinished) {
+      createItem();
+    }
+  }, 1500);
+  if (isFinished) {
+    clearInterval(generateItem);
+  }
 });
