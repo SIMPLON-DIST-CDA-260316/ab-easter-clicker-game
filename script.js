@@ -14,11 +14,11 @@ let timerInterval;
 let generateItem;
 
 const srcTable = [
-  { name: "egg choco", src: "/media/easter-egg-1.webp", score: 1 },
-  { name: "egg choco", src: "/media/easter-egg-2.webp", score: 1 },
-  { name: "egg gold", src: "/media/easter-egg-gold.webp", score: 5 },
-  { name: "egg crack", src: "/media/chick.webp", score: -2 },
-  { name: "chicken", src: "/media/chicken.webp", score: -2 },
+  { name: "egg choco", src: "./media/easter-egg-1.webp", score: 1 },
+  { name: "egg choco", src: "./media/easter-egg-2.webp", score: 1 },
+  { name: "egg gold", src: "./media/easter-egg-gold.webp", score: 5 },
+  { name: "egg crack", src: "./media/chick.webp", score: -2 },
+  { name: "chicken", src: "./media/chicken.webp", score: -2 },
 ];
 
 function createItem() {

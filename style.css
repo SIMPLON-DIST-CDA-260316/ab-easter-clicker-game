@@ -22,7 +22,7 @@ body{
 #game-container {
   width: 1000px;
   height: 500px;
-  background-image: url(/media/background-image.jpg);
+  background-image: url(./media/background-image.jpg);
   background-position: center;
   background-size: cover;
   position: relative;
