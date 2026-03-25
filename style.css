@@ -2,6 +2,8 @@ body{
     background-image: url(./media/pink-grid-background-vector-9435334.png);
     background-repeat: repeat;
     background-size: 300px;
+    font-family: "Jersey 10", sans-serif;
+    color: teal;
 }
 .game-header {
   display: flex;
@@ -93,7 +95,7 @@ button:is(:hover, :focus-visible){
   position: relative;
 }
 .pixel-corners {
-  border: 8px solid transparent;
+  border: 6px solid transparent;
 }
 .pixel-corners--wrapper {
   width: fit-content;

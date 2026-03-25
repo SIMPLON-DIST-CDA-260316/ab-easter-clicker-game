@@ -9,7 +9,7 @@ const timerElement = document.getElementById("timer");
 let isFinished = true;
 
 let total = 0;
-let time = 10;
+let time = 30;
 let timerInterval;
 let generateItem;
 
